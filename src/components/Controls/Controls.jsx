@@ -1,7 +1,9 @@
+import styles from './Controls.module.css';
+
 function Controls() {
 	return (
 		<div>
-			<button>Generate</button>
+			<button className={styles.primary}>Generate</button>
 		</div>
 	);
 }
