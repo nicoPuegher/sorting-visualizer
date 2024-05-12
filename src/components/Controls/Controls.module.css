@@ -20,3 +20,9 @@
 		font-size: 1.9rem;
 	}
 }
+
+@media screen and (min-width: 769px) {
+	.primary {
+		font-size: 1.5rem;
+	}
+}
