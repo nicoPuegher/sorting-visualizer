@@ -1,4 +1,5 @@
 .primary {
+	font-size: 1.7rem;
 	padding: 1rem;
 	border: 1px solid gray;
 	border-radius: 5px;
@@ -7,12 +8,6 @@
 
 .primary:hover {
 	background-color: lightgray;
-}
-
-@media screen and (min-width: 320px) and (max-width: 480px) {
-	.primary {
-		font-size: 1.7rem;
-	}
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
