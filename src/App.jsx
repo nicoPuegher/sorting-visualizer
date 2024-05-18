@@ -1,12 +1,10 @@
-import Controls from './components/Controls/Controls';
-import Bars from './components/Bars/Bars';
+import Sorting from './components/Sorting/Sorting';
 
 function App() {
 	return (
 		<>
 			<h1>Sorting Visualizer</h1>
-			<Bars />
-			<Controls />
+			<Sorting />
 		</>
 	);
 }
