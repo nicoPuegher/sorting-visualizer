@@ -6,10 +6,12 @@ function Sorting() {
 	const [showBars, setShowBars] = useState(false);
 	const [width, setWidth] = useState(window.innerWidth);
 
+	const handleShowBars = () => setShowBars(true);
+
 	return (
 		<>
 			<Bars showBars={showBars} />
-			<Controls />
+			<Controls onHandleShowBars={handleShowBars} />
 		</>
 	);
 }
