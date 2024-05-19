@@ -8,7 +8,7 @@ function Sorting() {
 
 	return (
 		<>
-			<Bars />
+			<Bars showBars={showBars} />
 			<Controls />
 		</>
 	);
