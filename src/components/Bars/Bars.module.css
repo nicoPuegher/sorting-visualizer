@@ -5,3 +5,12 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.bars {
+	align-items: flex-end;
+}
+
+.bar {
+	width: 2px;
+	background-color: green;
+}
