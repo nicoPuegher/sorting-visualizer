@@ -1,9 +1,9 @@
 import styles from './Controls.module.css';
 
-function Controls({ onHandleShowBars }) {
+function Controls({ onDisplay }) {
 	return (
 		<div>
-			<button className={styles.primary} onClick={onHandleShowBars}>
+			<button className={styles.primary} onClick={onDisplay}>
 				Generate
 			</button>
 		</div>
