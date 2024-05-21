@@ -4,7 +4,7 @@ import Controls from '../Controls/Controls';
 
 function Sorting() {
 	const [bars, setBars] = useState({ display: false, arr: [] });
-	const [width, setWidth] = useState(window.innerWidth);
+	const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -25,7 +25,7 @@ function Sorting() {
 
 	return (
 		<>
-			<Bars bars={bars} />
+			<Bars bars={bars} dimensions={dimensions} />
 			<Controls onHandleShowBars={handleShowBars} />
 		</>
 	);
