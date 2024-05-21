@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import updateDimensions from './updateDimensions.js';
-import createBarsArr from './createArr.js';
+import createBarsArr from './createBarsArr.js';
 import Bars from '../Bars/Bars';
 import Controls from '../Controls/Controls';
 
@@ -11,6 +11,7 @@ function Sorting() {
 
 	useEffect(() => {
 		const resize = updateDimensions(ref, setBars, setDimensions);
+		resize();
 		window.addEventListener('resize', resize);
 		return () => window.removeEventListener('resize', resize);
 	}, []);
@@ -20,7 +21,7 @@ function Sorting() {
 
 	return (
 		<>
-			<Bars bars={bars} dimensions={dimensions} ref={ref} />
+			<Bars bars={bars} ref={ref} />
 			<Controls onDisplay={handleDisplay} />
 		</>
 	);
