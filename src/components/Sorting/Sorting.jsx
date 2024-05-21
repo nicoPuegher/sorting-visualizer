@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import updateDimensions from './updateDimensions.js';
 import Bars from '../Bars/Bars';
 import Controls from '../Controls/Controls';
 
@@ -8,19 +9,10 @@ function Sorting() {
 	const ref = useRef(null);
 
 	useEffect(() => {
-		const handleResize = () => {
-			if (window.innerWidth !== width) {
-				setShowBars(false);
-				setWidth(window.innerWidth);
-			}
-		};
-
-		window.addEventListener('resize', handleResize);
-
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, [width]);
+		const resize = updateDimensions(ref, setBars, setDimensions);
+		window.addEventListener('resize', resize);
+		return () => window.removeEventListener('resize', resize);
+	}, []);
 
 	const handleShowBars = () => setShowBars(true);
 
