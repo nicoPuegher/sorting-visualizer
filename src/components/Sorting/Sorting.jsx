@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import updateDimensions from './updateDimensions.js';
+import createBarsArr from './createArr.js';
 import Bars from '../Bars/Bars';
 import Controls from '../Controls/Controls';
 
@@ -14,12 +15,13 @@ function Sorting() {
 		return () => window.removeEventListener('resize', resize);
 	}, []);
 
-	const handleShowBars = () => setShowBars(true);
+	const handleDisplay = () =>
+		setBars({ display: true, arr: createBarsArr(dimensions) });
 
 	return (
 		<>
 			<Bars bars={bars} dimensions={dimensions} ref={ref} />
-			<Controls onHandleShowBars={handleShowBars} />
+			<Controls onDisplay={handleDisplay} />
 		</>
 	);
 }
