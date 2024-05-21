@@ -1,4 +1,4 @@
-const updateDimensions = (ref, setBars, setDimensions) => {
+const updateDimensions = (ref, setBars, setDimensions) => () => {
 	if (ref.current) {
 		const width = ref.current.offsetWidth;
 		const height = ref.current.offsetHeight;
