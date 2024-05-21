@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './Controls.module.css';
 
 function Controls({ onDisplay }) {
@@ -9,5 +10,9 @@ function Controls({ onDisplay }) {
 		</div>
 	);
 }
+
+Controls.propTypes = {
+	onDisplay: PropTypes.func.isRequired,
+};
 
 export default Controls;
