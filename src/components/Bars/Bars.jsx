@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Bars.module.css';
 
 const Bars = forwardRef(function Bars({ bars }, ref) {
@@ -24,5 +25,9 @@ const Bars = forwardRef(function Bars({ bars }, ref) {
 		</div>
 	);
 });
+
+Bars.propTypes = {
+	bars: PropTypes.object.isRequired,
+};
 
 export default Bars;
