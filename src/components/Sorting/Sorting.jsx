@@ -3,7 +3,7 @@ import Bars from '../Bars/Bars';
 import Controls from '../Controls/Controls';
 
 function Sorting() {
-	const [showBars, setShowBars] = useState(false);
+	const [bars, setBars] = useState({ display: false, arr: [] });
 	const [width, setWidth] = useState(window.innerWidth);
 
 	useEffect(() => {
@@ -25,7 +25,7 @@ function Sorting() {
 
 	return (
 		<>
-			<Bars showBars={showBars} />
+			<Bars bars={bars} />
 			<Controls onHandleShowBars={handleShowBars} />
 		</>
 	);
