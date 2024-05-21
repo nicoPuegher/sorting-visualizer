@@ -1,9 +1,28 @@
+import { forwardRef } from 'react';
 import styles from './Bars.module.css';
 
-function Bars({ showBars }) {
-	const content = showBars ? <h2>Bars</h2> : <h2>Generate an array</h2>;
+const Bars = forwardRef(function Bars({ bars }, ref) {
+	let graph = null;
+	if (bars.arr) {
+		graph = bars.arr.map((bar, index) => (
+			<div
+				key={index}
+				className={styles.bar}
+				style={{ height: `${bar}px` }}
+			></div>
+		));
+	}
 
-	return <div className={styles.container}>{content}</div>;
-}
+	const customStyles = bars.display
+		? `${styles.container} ${styles.bars}`
+		: `${styles.container}`;
+	const content = bars.display ? graph : <h2>Generate an array</h2>;
+
+	return (
+		<div className={customStyles} ref={ref}>
+			{content}
+		</div>
+	);
+});
 
 export default Bars;
