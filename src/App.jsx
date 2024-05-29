@@ -6,7 +6,9 @@ function App() {
 			<header>
 				<h1>Sorting Visualizer</h1>
 			</header>
-			<Sorting />
+			<main>
+				<Sorting />
+			</main>
 		</>
 	);
 }
