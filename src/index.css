@@ -32,6 +32,10 @@ h2 {
 	font-size: 2.2rem;
 }
 
+header {
+	text-align: center;
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;
