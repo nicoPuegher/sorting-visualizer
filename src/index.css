@@ -45,16 +45,16 @@ main {
 	align-items: center;
 }
 
-@media (prefers-color-scheme: light) {
-	:root {
-		color: #213547;
-		background-color: #ffffff;
-	}
-}
-
 #root {
 	height: 100dvh;
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		color: #213547;
+		background-color: #ffffff;
+	}
 }
