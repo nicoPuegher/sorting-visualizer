@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import updateDimensions from './updateDimensions.js';
-import createBarsArr from './createBarsArr.js';
 import Bars from '../Bars/Bars';
 import Controls from '../Controls/Controls';
+import updateDimensions from '../../helpers/updateDimensions.js';
+import createBarsArr from '../../helpers/createBarsArr.js';
 
 function Sorting() {
 	const [bars, setBars] = useState({ display: false, arr: [] });

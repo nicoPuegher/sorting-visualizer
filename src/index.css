@@ -1,3 +1,4 @@
+/* General styles */
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	font-size: 62.5%;
@@ -21,7 +22,7 @@
 
 h1,
 h2 {
-	line-height: 1.1;
+	line-height: 0.8;
 }
 
 h1 {
@@ -32,18 +33,55 @@ h2 {
 	font-size: 2.2rem;
 }
 
+header {
+	text-align: center;
+}
+
+main {
+	flex: 1;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+button {
+	font-size: 1.7rem;
+	padding: 1rem;
+	border: 1px solid gray;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: lightgray;
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+	button {
+		font-size: 1.9rem;
+	}
+}
+
+@media screen and (min-width: 769px) {
+	button {
+		font-size: 1.5rem;
+	}
+}
+
+/* React div */
+#root {
+	height: 100dvh;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+/* Default color scheme */
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;
 		background-color: #ffffff;
 	}
-}
-
-#root {
-	height: 100dvh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px;
 }

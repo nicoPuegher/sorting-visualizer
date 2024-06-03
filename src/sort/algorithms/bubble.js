@@ -1,7 +1,7 @@
 const bubble = (array) => {
 	const copy = array.slice();
 	let len = copy.length;
-	let swapped = true;
+	let swapped;
 
 	do {
 		swapped = false;
