@@ -46,6 +46,30 @@ main {
 	align-items: center;
 }
 
+button {
+	font-size: 1.7rem;
+	padding: 1rem;
+	border: 1px solid gray;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: lightgray;
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+	button {
+		font-size: 1.9rem;
+	}
+}
+
+@media screen and (min-width: 769px) {
+	button {
+		font-size: 1.5rem;
+	}
+}
+
 /* React div */
 #root {
 	height: 100dvh;
