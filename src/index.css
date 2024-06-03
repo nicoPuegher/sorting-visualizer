@@ -1,3 +1,4 @@
+/* General styles */
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	font-size: 62.5%;
@@ -45,6 +46,7 @@ main {
 	align-items: center;
 }
 
+/* React div */
 #root {
 	height: 100dvh;
 	display: flex;
@@ -52,6 +54,7 @@ main {
 	padding: 10px;
 }
 
+/* Default color scheme */
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;
