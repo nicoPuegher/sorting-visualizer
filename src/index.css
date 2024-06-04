@@ -46,26 +46,31 @@ main {
 	align-items: center;
 }
 
-button {
+button,
+select {
 	font-size: 1.7rem;
 	padding: 1rem;
 	border: 1px solid gray;
 	border-radius: 5px;
 	cursor: pointer;
-}
-
-button:hover {
 	background-color: lightgray;
 }
 
+button:hover,
+select:hover {
+	background-color: gray;
+}
+
 @media screen and (min-width: 481px) and (max-width: 768px) {
-	button {
+	button,
+	select {
 		font-size: 1.9rem;
 	}
 }
 
 @media screen and (min-width: 769px) {
-	button {
+	button,
+	select {
 		font-size: 1.5rem;
 	}
 }
