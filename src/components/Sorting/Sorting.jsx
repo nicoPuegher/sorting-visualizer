@@ -5,7 +5,11 @@ import updateDimensions from '../../helpers/updateDimensions.js';
 import createBarsArr from '../../helpers/createBarsArr.js';
 
 function Sorting() {
-	const [bars, setBars] = useState({ display: false, arr: [] });
+	const [bars, setBars] = useState({
+		display: false,
+		sorted: false,
+		arr: [],
+	});
 	const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 	const ref = useRef(null);
 
@@ -17,7 +21,11 @@ function Sorting() {
 	}, []);
 
 	const handleDisplay = () =>
-		setBars({ display: true, arr: createBarsArr(dimensions) });
+		setBars({
+			display: true,
+			sorted: false,
+			arr: createBarsArr(dimensions),
+		});
 
 	return (
 		<>
