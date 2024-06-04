@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import styles from './Selector.module.css';
 
-function Selector() {
+function Selector({ onSelect }) {
 	return (
 		<form className={styles.form}>
 			<label id="selector">Sorting</label>
@@ -19,5 +20,9 @@ function Selector() {
 		</form>
 	);
 }
+
+Selector.propTypes = {
+	onSelect: PropTypes.func.isRequired,
+};
 
 export default Selector;
