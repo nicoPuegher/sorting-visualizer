@@ -2,7 +2,7 @@ import Selector from '../Selector/Selector';
 import PropTypes from 'prop-types';
 import styles from './Controls.module.css';
 
-function Controls({ onDisplay, onSelect }) {
+function Controls({ onDisplay, onSubmit, onSelect }) {
 	return (
 		<div className={styles.container}>
 			<button className={styles.primary} onClick={onDisplay}>
@@ -15,6 +15,7 @@ function Controls({ onDisplay, onSelect }) {
 
 Controls.propTypes = {
 	onDisplay: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired,
 	onSelect: PropTypes.func.isRequired,
 };
 
