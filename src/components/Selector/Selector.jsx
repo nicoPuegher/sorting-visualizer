@@ -2,10 +2,15 @@ import PropTypes from 'prop-types';
 import styles from './Selector.module.css';
 
 function Selector({ onSelect }) {
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const sortingAlgorithm = e.target[0].value;
+	};
+
 	const handleChange = () => onSelect();
 
 	return (
-		<form className={styles.form}>
+		<form className={styles.form} onSubmit={handleSubmit}>
 			<label id="selector">Sorting</label>
 
 			<select
