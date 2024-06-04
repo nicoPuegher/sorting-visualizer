@@ -3,7 +3,7 @@ const updateDimensions = (ref, setBars, setDimensions) => () => {
 		const width = ref.current.offsetWidth;
 		const height = ref.current.offsetHeight;
 
-		setBars({ display: false, arr: [] });
+		setBars({ display: false, sorted: false, arr: [] });
 		setDimensions({ width: width, height: height });
 	}
 };
