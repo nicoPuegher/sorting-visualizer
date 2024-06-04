@@ -8,7 +8,7 @@ function Controls({ onDisplay, onSubmit, onSelect }) {
 			<button className={styles.primary} onClick={onDisplay}>
 				Generate
 			</button>
-			<Selector onSelect={onSelect} />
+			<Selector onSubmit={onSubmit} onSelect={onSelect} />
 		</div>
 	);
 }
