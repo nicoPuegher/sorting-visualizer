@@ -8,7 +8,11 @@ function Selector({ onSelect }) {
 		<form className={styles.form}>
 			<label id="selector">Sorting</label>
 
-			<select onChange={handleChange} aria-labelledby="selector">
+			<select
+				name="selectElement"
+				onChange={handleChange}
+				aria-labelledby="selector"
+			>
 				<option value="bubble">Bubble</option>
 				<option value="selection">Selection</option>
 				<option value="insertion">Insertion</option>
