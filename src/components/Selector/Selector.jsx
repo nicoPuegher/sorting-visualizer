@@ -2,11 +2,13 @@ import PropTypes from 'prop-types';
 import styles from './Selector.module.css';
 
 function Selector({ onSelect }) {
+	const handleChange = () => onSelect();
+
 	return (
 		<form className={styles.form}>
 			<label id="selector">Sorting</label>
 
-			<select aria-labelledby="selector">
+			<select onChange={handleChange} aria-labelledby="selector">
 				<option value="bubble">Bubble</option>
 				<option value="selection">Selection</option>
 				<option value="insertion">Insertion</option>
