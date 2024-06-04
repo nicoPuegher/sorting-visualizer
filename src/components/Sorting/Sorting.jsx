@@ -27,10 +27,16 @@ function Sorting() {
 			arr: createBarsArr(dimensions),
 		});
 
+	const handleSelect = () => {
+		if (bars.sorted) {
+			updateDimensions(ref, setBars, setDimensions);
+		}
+	};
+
 	return (
 		<>
 			<Bars bars={bars} ref={ref} />
-			<Controls onDisplay={handleDisplay} />
+			<Controls onDisplay={handleDisplay} onSelect={handleSelect} />
 		</>
 	);
 }
