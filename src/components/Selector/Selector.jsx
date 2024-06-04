@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './Selector.module.css';
 
-function Selector({ onSelect }) {
+function Selector({ onSubmit, onSelect }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const sortingAlgorithm = e.target[0].value;
@@ -33,6 +33,7 @@ function Selector({ onSelect }) {
 }
 
 Selector.propTypes = {
+	onSubmit: PropTypes.func.isRequired,
 	onSelect: PropTypes.func.isRequired,
 };
 
