@@ -5,6 +5,7 @@ function Selector({ onSubmit, onSelect }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const sortingAlgorithm = e.target[0].value;
+		onSubmit(sortingAlgorithm);
 	};
 
 	const handleChange = () => onSelect();
