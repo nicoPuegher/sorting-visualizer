@@ -27,6 +27,8 @@ function Sorting() {
 			arr: createBarsArr(dimensions),
 		});
 
+	const handleSubmit = (sortingAlgorithm) => {};
+
 	const handleSelect = () => {
 		if (bars.sorted) {
 			updateDimensions(ref, setBars, setDimensions);
@@ -36,7 +38,11 @@ function Sorting() {
 	return (
 		<>
 			<Bars bars={bars} ref={ref} />
-			<Controls onDisplay={handleDisplay} onSelect={handleSelect} />
+			<Controls
+				onDisplay={handleDisplay}
+				onSubmit={handleSubmit}
+				onSelect={handleSelect}
+			/>
 		</>
 	);
 }
