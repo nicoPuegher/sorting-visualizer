@@ -3,8 +3,12 @@ import Sorting from './components/Sorting/Sorting';
 function App() {
 	return (
 		<>
-			<h1>Sorting Visualizer</h1>
-			<Sorting />
+			<header>
+				<h1>Sorting Visualizer</h1>
+			</header>
+			<main>
+				<Sorting />
+			</main>
 		</>
 	);
 }
