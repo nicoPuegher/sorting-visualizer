@@ -3,6 +3,7 @@ import Bars from '../Bars/Bars';
 import Controls from '../Controls/Controls';
 import updateDimensions from '../../helpers/updateDimensions.js';
 import createBarsArr from '../../helpers/createBarsArr.js';
+import Sort from '../../sort/Sort.js';
 
 function Sorting() {
 	const [bars, setBars] = useState({
@@ -27,7 +28,10 @@ function Sorting() {
 			arr: createBarsArr(dimensions),
 		});
 
-	const handleSubmit = (sortingAlgorithm) => {};
+	const handleSubmit = (sortingAlgorithm) => {
+		const sort = new Sort();
+		sort[sortingAlgorithm](bars, setBars);
+	};
 
 	const handleSelect = () => {
 		if (bars.sorted) {
