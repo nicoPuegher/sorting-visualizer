@@ -6,7 +6,14 @@ const generateGraph = (bars, styles) => {
 			<div
 				key={index}
 				className={styles}
-				style={{ height: `${bar}px` }}
+				style={{
+					height: `${bar.height}px`,
+					backgroundColor: bar.isSorted
+						? 'purple'
+						: bar.isCompared
+							? 'red'
+							: '',
+				}}
 			></div>
 		));
 	}
