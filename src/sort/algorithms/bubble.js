@@ -1,7 +1,6 @@
 const bubble = (state, setState) => {
 	const array = [...state.arr];
 	let jLen = array.length;
-	let swapped;
 	const animations = [];
 
 	for (let i = 0; i < array.length; i++) {
@@ -14,6 +13,35 @@ const bubble = (state, setState) => {
 		}
 		animations[animations.length - 1][3] = true;
 		jLen--;
+	}
+
+	for (let i = 0; i < animations.length; i++) {
+		setTimeout(() => {
+			setState((s) => {
+				const [j, k, swapped, sorted] = animations[i];
+				const newArr = [...s.arr];
+				newArr[j].isCompared = true;
+				newArr[k].isCompared = true;
+				if (j > 0) {
+					newArr[j - 1].isCompared = false;
+				}
+
+				if (swapped) {
+					[newArr[j], newArr[k]] = [newArr[k], newArr[j]];
+				}
+
+				if (sorted == true) {
+					newArr[j].isCompared = false;
+					newArr[k].isSorted = true;
+					newArr[k].isCompared = false;
+				}
+
+				if (i == animations.length - 1) {
+					newArr[j].isSorted = true;
+				}
+				return { ...s, arr: newArr };
+			});
+		}, i * 10);
 	}
 };
 
