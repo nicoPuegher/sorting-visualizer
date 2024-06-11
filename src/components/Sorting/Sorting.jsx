@@ -29,8 +29,7 @@ function Sorting() {
 		});
 
 	const handleSubmit = (sortingAlgorithm) => {
-		const sort = new Sort();
-		sort[sortingAlgorithm](bars, setBars);
+		Sort[sortingAlgorithm](bars, setBars);
 	};
 
 	const handleSelect = () => {
