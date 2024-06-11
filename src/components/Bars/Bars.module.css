@@ -10,9 +10,10 @@
 
 .bars {
 	align-items: flex-end;
+	gap: 2px;
 }
 
 .bar {
-	width: 2px;
+	flex-grow: 1;
 	background-color: green;
 }

@@ -7,8 +7,8 @@ import heapSort from './algorithms/heap.js';
 import countingSort from './algorithms/counting.js';
 
 class Sort {
-	bubble(array) {
-		return bubbleSort(array);
+	bubble(state, setState) {
+		return bubbleSort(state, setState);
 	}
 
 	selection(array) {
