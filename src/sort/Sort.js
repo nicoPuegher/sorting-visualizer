@@ -7,32 +7,32 @@ import heapSort from './algorithms/heap.js';
 import countingSort from './algorithms/counting.js';
 
 class Sort {
-	bubble(state, setState) {
+	static bubble(state, setState) {
 		return bubbleSort(state, setState);
 	}
 
-	selection(array) {
-		return selectionSort(array);
+	static selection(state, setState) {
+		return selectionSort(state, setState);
 	}
 
-	insertion(array) {
-		return insertionSort(array);
+	static insertion(state, setState) {
+		return insertionSort(state, setState);
 	}
 
-	merge(array) {
-		return mergeSort(array);
+	static merge(state, setState) {
+		return mergeSort(state, setState);
 	}
 
-	quick(array) {
-		return quickSort(array);
+	static quick(state, setState) {
+		return quickSort(state, setState);
 	}
 
-	heap(array) {
-		return heapSort(array);
+	static heap(state, setState) {
+		return heapSort(state, setState);
 	}
 
-	counting(array) {
-		return countingSort(array);
+	static counting(state, setState) {
+		return countingSort(state, setState);
 	}
 }
 
