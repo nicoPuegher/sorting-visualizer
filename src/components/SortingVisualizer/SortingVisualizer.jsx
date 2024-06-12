@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import Chart from '../Chart/Chart';
 import Controls from '../Controls/Controls';
 
-import updateDimensions from '../../helpers/updateDimensions.js';
+import setNewDimensions from '../../helpers/setNewDimensions.js';
 import createBarsArr from '../../helpers/createBarsArr.js';
 import Sort from '../../sort/Sort.js';
 
@@ -13,21 +13,30 @@ function SortingVisualizer() {
 		isSorted: false,
 		array: [],
 	});
-	const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+	const [currentDimensions, setCurrentDimensions] = useState({
+		width: 0,
+		height: 0,
+	});
+
 	const ref = useRef(null);
 
 	useEffect(() => {
-		const resize = updateDimensions(ref, setBarChart, setDimensions);
-		resize();
-		window.addEventListener('resize', resize);
-		return () => window.removeEventListener('resize', resize);
+		const newDimensions = setNewDimensions(
+			ref,
+			setBarChart,
+			setCurrentDimensions,
+		);
+		newDimensions();
+		window.addEventListener('resize', newDimensions);
+		return () => window.removeEventListener('resize', newDimensions);
 	}, []);
 
 	const handleDisplay = () =>
 		setBarChart({
 			display: true,
 			isSorted: false,
-			array: createBarsArr(dimensions),
+			array: createBarsArr(currentDimensions),
 		});
 
 	const handleSubmit = (sortingAlgorithm) => {
@@ -36,7 +45,7 @@ function SortingVisualizer() {
 
 	const handleSelect = () => {
 		if (barChart.isSorted) {
-			updateDimensions(ref, setBarChart, setDimensions);
+			setNewDimensions(ref, setBarChart, setCurrentDimensions);
 		}
 	};
 
