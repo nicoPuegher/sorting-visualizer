@@ -4,7 +4,7 @@ import Chart from '../Chart/Chart';
 import Controls from '../Controls/Controls';
 
 import setNewDimensions from '../../helpers/setNewDimensions.js';
-import createBarsArr from '../../helpers/createBarsArr.js';
+import generateBarChartArray from '../../helpers/generateBarChartArray.js';
 import Sort from '../../sort/Sort.js';
 
 function SortingVisualizer() {
@@ -36,7 +36,7 @@ function SortingVisualizer() {
 		setBarChart({
 			display: true,
 			isSorted: false,
-			array: createBarsArr(currentDimensions),
+			array: generateBarChartArray(currentDimensions),
 		});
 
 	const handleSubmit = (sortingAlgorithm) => {
