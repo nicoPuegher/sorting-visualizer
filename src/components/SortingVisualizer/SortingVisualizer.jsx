@@ -8,41 +8,41 @@ import createBarsArr from '../../helpers/createBarsArr.js';
 import Sort from '../../sort/Sort.js';
 
 function SortingVisualizer() {
-	const [bars, setBars] = useState({
+	const [barChart, setBarChart] = useState({
 		display: false,
-		sorted: false,
-		arr: [],
+		isSorted: false,
+		array: [],
 	});
 	const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 	const ref = useRef(null);
 
 	useEffect(() => {
-		const resize = updateDimensions(ref, setBars, setDimensions);
+		const resize = updateDimensions(ref, setBarChart, setDimensions);
 		resize();
 		window.addEventListener('resize', resize);
 		return () => window.removeEventListener('resize', resize);
 	}, []);
 
 	const handleDisplay = () =>
-		setBars({
+		setBarChart({
 			display: true,
-			sorted: false,
-			arr: createBarsArr(dimensions),
+			isSorted: false,
+			array: createBarsArr(dimensions),
 		});
 
 	const handleSubmit = (sortingAlgorithm) => {
-		Sort[sortingAlgorithm](bars, setBars);
+		Sort[sortingAlgorithm](barChart, setBarChart);
 	};
 
 	const handleSelect = () => {
-		if (bars.sorted) {
-			updateDimensions(ref, setBars, setDimensions);
+		if (barChart.isSorted) {
+			updateDimensions(ref, setBarChart, setDimensions);
 		}
 	};
 
 	return (
 		<>
-			<Bars bars={bars} ref={ref} />
+			<Bars barChart={barChart} ref={ref} />
 			<Controls
 				onDisplay={handleDisplay}
 				onSubmit={handleSubmit}

@@ -20,52 +20,52 @@ const generateAnimations = (array, animations) => {
 	});
 };
 
-const displayAnimations = (setState, animations) => {
+const displayAnimations = (setBarChart, animations) => {
 	animations.forEach((animation, i) => {
 		// Adjust SPEED variable to control the sorting speed
 		setTimeout(() => {
-			setState((s) => {
+			setBarChart((b) => {
 				const [j, k, swapped, sorted] = animation;
-				const copyArr = [...s.arr];
+				const copyArray = [...b.array];
 
 				// Current comparison
-				copyArr[j].isCompared = true;
-				copyArr[k].isCompared = true;
+				copyArray[j].isCompared = true;
+				copyArray[k].isCompared = true;
 
 				// Turn previous item back to normal
 				if (j > 0) {
-					copyArr[j - 1].isCompared = false;
+					copyArray[j - 1].isCompared = false;
 				}
 
 				// Perform swap animation
 				if (swapped) {
-					[copyArr[j], copyArr[k]] = [copyArr[k], copyArr[j]];
+					[copyArray[j], copyArray[k]] = [copyArray[k], copyArray[j]];
 				}
 
 				// Item is sorted
 				if (sorted) {
-					copyArr[j].isCompared = false;
-					copyArr[k].isSorted = true;
-					copyArr[k].isCompared = false;
+					copyArray[j].isCompared = false;
+					copyArray[k].isSorted = true;
+					copyArray[k].isCompared = false;
 				}
 
 				// Set last item (first) as sorted
 				if (i == animations.length - 1) {
-					copyArr[j].isSorted = true;
+					copyArray[j].isSorted = true;
 				}
 
-				return { ...s, arr: copyArr };
+				return { ...b, array: copyArray };
 			});
 		}, i * SPEED);
 	});
 };
 
-const bubble = (state, setState) => {
-	const array = [...state.arr];
+const bubble = (barChart, setBarChart) => {
+	const array = [...barChart.array];
 	const animations = [];
 
 	generateAnimations(array, animations);
-	displayAnimations(setState, animations);
+	displayAnimations(setBarChart, animations);
 };
 
 export default bubble;
