@@ -1,13 +1,12 @@
-const generateGraph = (barChart, styles) => {
-	let graph = null;
+const generateBarChart = (barChart, styles) => {
+	let chart = null;
 
 	if (barChart.array) {
-		graph = barChart.array.map((bar, index) => (
+		chart = barChart.array.map((bar, index) => (
 			<div
 				key={index}
 				className={styles}
 				style={{
-					// width: `${bar.width}px`,
 					height: `${bar.height}px`,
 					backgroundColor: bar.isSorted
 						? 'purple'
@@ -19,7 +18,7 @@ const generateGraph = (barChart, styles) => {
 		));
 	}
 
-	return graph;
+	return chart;
 };
 
-export default generateGraph;
+export default generateBarChart;

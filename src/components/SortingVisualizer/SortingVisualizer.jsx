@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-import Bars from '../Bars/Bars';
+import Chart from '../Chart/Chart';
 import Controls from '../Controls/Controls';
 
 import updateDimensions from '../../helpers/updateDimensions.js';
@@ -42,7 +42,7 @@ function SortingVisualizer() {
 
 	return (
 		<>
-			<Bars barChart={barChart} ref={ref} />
+			<Chart barChart={barChart} ref={ref} />
 			<Controls
 				onDisplay={handleDisplay}
 				onSubmit={handleSubmit}
