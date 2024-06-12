@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
+
 import Bars from '../Bars/Bars';
 import Controls from '../Controls/Controls';
+
 import updateDimensions from '../../helpers/updateDimensions.js';
 import createBarsArr from '../../helpers/createBarsArr.js';
 import Sort from '../../sort/Sort.js';
 
-function Sorting() {
+function SortingVisualizer() {
 	const [bars, setBars] = useState({
 		display: false,
 		sorted: false,
@@ -50,4 +52,4 @@ function Sorting() {
 	);
 }
 
-export default Sorting;
+export default SortingVisualizer;
