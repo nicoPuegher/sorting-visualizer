@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import generateBarChart from '../../helpers/generateBarChart.jsx';
+import generateBarChart from './utils/generateBarChart.jsx';
 import getBarChartStyles from '../../helpers/getBarChartStyles.js';
 import PropTypes from 'prop-types';
 
