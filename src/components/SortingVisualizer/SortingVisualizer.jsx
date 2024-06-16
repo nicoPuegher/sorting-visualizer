@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import Chart from '../Chart/Chart';
 import Controls from '../Controls/Controls';
 
-import setNewDimensions from '../../helpers/setNewDimensions.js';
+import setNewDimensions from './helpers/setNewDimensions.js';
 import generateBarChartArray from '../../helpers/generateBarChartArray.js';
 import Sort from '../../sort/Sort.js';
 
