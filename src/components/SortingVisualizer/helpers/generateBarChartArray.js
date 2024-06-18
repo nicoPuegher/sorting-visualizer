@@ -1,4 +1,6 @@
-const TOTAL_BARS = 70;
+import constants from '../../../data/constants.js';
+
+const { TOTAL_BARS } = constants;
 
 const generateBarChartArray = (dimensions) => {
 	const barChartArray = [];
