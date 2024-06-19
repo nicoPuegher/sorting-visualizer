@@ -5,7 +5,7 @@ import Controls from '../Controls/Controls';
 
 import setNewDimensions from './helpers/setNewDimensions.js';
 import generateBarChartArray from './helpers/generateBarChartArray.js';
-import Sort from '../../sort/Sort.js';
+import Sort from './core/Sort.js';
 
 function SortingVisualizer() {
 	const [barChart, setBarChart] = useState({
