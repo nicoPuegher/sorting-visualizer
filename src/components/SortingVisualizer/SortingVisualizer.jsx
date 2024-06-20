@@ -6,6 +6,7 @@ import Controls from '../Controls/Controls';
 import setNewDimensions from './helpers/setNewDimensions.js';
 import generateBarChartArray from './helpers/generateBarChartArray.js';
 import Sort from './core/Sort.js';
+import displayAnimations from './helpers/displayAnimations.js';
 
 function SortingVisualizer() {
 	const [barChart, setBarChart] = useState({
@@ -32,12 +33,17 @@ function SortingVisualizer() {
 		return () => window.removeEventListener('resize', newDimensions);
 	}, []);
 
-	const handleDisplay = () =>
+	const handleDisplay = () => {
+		if (barChart.array.length > 0) {
+			displayAnimations(null, []);
+		}
+
 		setBarChart({
 			display: true,
 			isSorted: false,
 			array: generateBarChartArray(currentDimensions),
 		});
+	};
 
 	const handleSubmit = (sortingAlgorithm) => {
 		Sort[sortingAlgorithm](barChart, setBarChart);
