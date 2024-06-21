@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 
 import styles from './Controls.module.css';
 
-function Controls({ onDisplay, onSubmit, onSelect }) {
+function Controls({ barChart, onDisplay, onSubmit }) {
 	return (
 		<div className={styles.container}>
 			<button onClick={onDisplay}>Generate</button>
-			<Selector onSubmit={onSubmit} onSelect={onSelect} />
+			<Selector barChart={barChart} onSubmit={onSubmit} />
 		</div>
 	);
 }
 
 Controls.propTypes = {
+	barChart: PropTypes.object.isRequired,
 	onDisplay: PropTypes.func.isRequired,
 	onSubmit: PropTypes.func.isRequired,
-	onSelect: PropTypes.func.isRequired,
 };
 
 export default Controls;
