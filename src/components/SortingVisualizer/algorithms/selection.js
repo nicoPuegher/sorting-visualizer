@@ -37,9 +37,9 @@ const generateAnimations = (array) => {
 	return animations;
 };
 
-const selection = (barChart, setBarChart) => {
-	const animations = generateAnimations(barChart.array);
-	displayAnimations(setBarChart, animations);
+const selection = (state, setState) => {
+	const animations = generateAnimations(state.chartArray);
+	displayAnimations(setState, animations);
 };
 
 export default selection;

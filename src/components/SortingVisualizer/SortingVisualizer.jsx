@@ -22,7 +22,7 @@ function SortingVisualizer() {
 	useEffect(() => {
 		const newDimensions = setNewDimensions(
 			ref,
-			setBarChart,
+			setState,
 			setCurrentDimensions,
 		);
 		newDimensions();
@@ -31,26 +31,28 @@ function SortingVisualizer() {
 	}, []);
 
 	const handleDisplay = () => {
-		if (barChart.array.length > 0) {
+		if (state.chartArray.length > 0) {
 			displayAnimations(null, []);
 		}
 
-		setBarChart({
-			display: true,
-			isAnimationGoing: false,
-			array: generateBarChartArray(currentDimensions),
+		setState({
+			displayChart: true,
+			isAnimationActive: false,
+			chartArray: generateBarChartArray(currentDimensions),
+			containerWidth: 0,
+			contanierHeight: 0,
 		});
 	};
 
 	const handleSubmit = (sortingAlgorithm) => {
-		Sort[sortingAlgorithm](barChart, setBarChart);
+		Sort[sortingAlgorithm](state, setState);
 	};
 
 	return (
 		<>
-			<Chart barChart={barChart} ref={ref} />
+			<Chart state={state} ref={ref} />
 			<Controls
-				barChart={barChart}
+				state={state}
 				onDisplay={handleDisplay}
 				onSubmit={handleSubmit}
 			/>

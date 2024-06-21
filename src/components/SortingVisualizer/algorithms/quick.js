@@ -37,12 +37,12 @@ function generateAnimations(arr, low = 0, high = arr.length - 1, animations) {
 	}
 }
 
-const quick = (barChart, setBarChart) => {
-	const copy = structuredClone(barChart.array);
+const quick = (state, setState) => {
+	const copy = structuredClone(state.chartArray);
 	const animations = [];
 
 	generateAnimations(copy, 0, copy.length - 1, animations);
-	displayAnimations(setBarChart, animations);
+	displayAnimations(setState, animations);
 };
 
 export default quick;

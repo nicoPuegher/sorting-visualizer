@@ -27,9 +27,9 @@ const generateAnimations = (array) => {
 	return animations;
 };
 
-const bubble = (barChart, setBarChart) => {
-	const animations = generateAnimations(barChart.array);
-	displayAnimations(setBarChart, animations);
+const bubble = (state, setState) => {
+	const animations = generateAnimations(state.chartArray);
+	displayAnimations(setState, animations);
 };
 
 export default bubble;

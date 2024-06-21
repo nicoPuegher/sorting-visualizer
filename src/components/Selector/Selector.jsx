@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Selector.module.css';
 
-function Selector({ barChart, onSubmit }) {
+function Selector({ state, onSubmit }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
@@ -21,7 +21,7 @@ function Selector({ barChart, onSubmit }) {
 				<option value="quick">Quick</option>
 			</select>
 
-			<button type="submit" disabled={barChart.isAnimationGoing}>
+			<button type="submit" disabled={state.isAnimationActive}>
 				Sort
 			</button>
 		</form>
@@ -29,7 +29,7 @@ function Selector({ barChart, onSubmit }) {
 }
 
 Selector.propTypes = {
-	barChart: PropTypes.object.isRequired,
+	state: PropTypes.object.isRequired,
 	onSubmit: PropTypes.func.isRequired,
 };
 

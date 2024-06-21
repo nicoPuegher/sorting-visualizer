@@ -6,7 +6,7 @@ const { SORTING_SPEED } = constants;
 
 let timeouts = [];
 
-const displayAnimations = (setBarChart, animations) => {
+const displayAnimations = (setState, animations) => {
 	// Use current animation token
 	const animationToken = currentAnimationToken;
 
@@ -18,11 +18,11 @@ const displayAnimations = (setBarChart, animations) => {
 			// Abort if the token changed
 			if (animationToken !== currentAnimationToken) return;
 
-			setBarChart((b) => {
-				const copy = structuredClone(b.array);
+			setState((prevState) => {
+				const copy = structuredClone(prevState.chartArray);
 
 				// If the array is empty, abort the animation
-				if (!copy || copy.length == 0) return b;
+				if (!copy || copy.length == 0) return prevState;
 
 				// Reset the isCompared boolean value of every bar
 				Transform.allToNotCompared(copy);
@@ -35,9 +35,9 @@ const displayAnimations = (setBarChart, animations) => {
 				Transform.allToSorted(animations, copy, i);
 
 				return {
-					...b,
-					isAnimationGoing: true,
-					array: copy,
+					...prevState,
+					isAnimationActive: true,
+					chartArray: copy,
 				};
 			});
 		}, i * SORTING_SPEED);

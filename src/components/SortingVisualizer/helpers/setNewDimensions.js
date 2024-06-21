@@ -1,6 +1,6 @@
 let currentAnimationToken = 0;
 
-const setNewDimensions = (ref, setBarChart, setCurrentDimensions) => {
+const setNewDimensions = (ref, setState, setCurrentDimensions) => {
 	return () => {
 		// Abort ongoing animations
 		currentAnimationToken++;
@@ -12,10 +12,12 @@ const setNewDimensions = (ref, setBarChart, setCurrentDimensions) => {
 		setCurrentDimensions({ width, height });
 
 		// Clear the bar chart array to prevent errors during resize
-		setBarChart({
-			display: false,
-			isAnimationGoing: false,
-			array: [],
+		setState({
+			displayChart: false,
+			isAnimationActive: false,
+			chartArray: [],
+			containerWidth: 0,
+			contanierHeight: 0,
 		});
 	};
 };

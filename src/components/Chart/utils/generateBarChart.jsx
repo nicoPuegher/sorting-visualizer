@@ -1,8 +1,8 @@
-const generateBarChart = (barChart, styles) => {
+const generateBarChart = (state, styles) => {
 	let chart = null;
 
-	if (barChart.array) {
-		chart = barChart.array.map((bar, index) => (
+	if (state.chartArray) {
+		chart = state.chartArray.map((bar, index) => (
 			<div
 				key={index}
 				className={styles}

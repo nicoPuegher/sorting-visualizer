@@ -29,9 +29,9 @@ const generateAnimations = (array) => {
 	return animations;
 };
 
-const insertion = (barChart, setBarChart) => {
-	const animations = generateAnimations(barChart.array);
-	displayAnimations(setBarChart, animations);
+const insertion = (state, setState) => {
+	const animations = generateAnimations(state.charArray);
+	displayAnimations(setState, animations);
 };
 
 export default insertion;

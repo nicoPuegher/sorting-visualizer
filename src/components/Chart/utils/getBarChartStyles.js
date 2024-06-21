@@ -1,5 +1,5 @@
-const getBarChartStyles = (barChart, styles) => {
-	return barChart.display
+const getBarChartStyles = (state, styles) => {
+	return state.displayChart
 		? `${styles.container} ${styles.chart}`
 		: `${styles.container}`;
 };
