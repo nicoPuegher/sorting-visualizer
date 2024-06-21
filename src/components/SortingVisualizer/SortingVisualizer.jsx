@@ -11,7 +11,7 @@ import displayAnimations from './helpers/displayAnimations.js';
 function SortingVisualizer() {
 	const [barChart, setBarChart] = useState({
 		display: false,
-		isSorted: false,
+		isAnimationGoing: false,
 		array: [],
 	});
 
@@ -40,7 +40,7 @@ function SortingVisualizer() {
 
 		setBarChart({
 			display: true,
-			isSorted: false,
+			isAnimationGoing: false,
 			array: generateBarChartArray(currentDimensions),
 		});
 	};
@@ -49,19 +49,13 @@ function SortingVisualizer() {
 		Sort[sortingAlgorithm](barChart, setBarChart);
 	};
 
-	const handleSelect = () => {
-		if (barChart.isSorted) {
-			setNewDimensions(ref, setBarChart, setCurrentDimensions);
-		}
-	};
-
 	return (
 		<>
 			<Chart barChart={barChart} ref={ref} />
 			<Controls
+				barChart={barChart}
 				onDisplay={handleDisplay}
 				onSubmit={handleSubmit}
-				onSelect={handleSelect}
 			/>
 		</>
 	);
