@@ -34,7 +34,11 @@ const displayAnimations = (setBarChart, animations) => {
 				// Make the isSorted boolean value of every bar true
 				Transform.allToSorted(animations, copy, i);
 
-				return { ...b, array: copy };
+				return {
+					...b,
+					isAnimationGoing: true,
+					array: copy,
+				};
 			});
 		}, i * SORTING_SPEED);
 
