@@ -9,15 +9,12 @@ import Sort from './core/Sort.js';
 import displayAnimations from './helpers/displayAnimations.js';
 
 function SortingVisualizer() {
-	const [barChart, setBarChart] = useState({
-		display: false,
-		isAnimationGoing: false,
-		array: [],
-	});
-
-	const [currentDimensions, setCurrentDimensions] = useState({
-		width: 0,
-		height: 0,
+	const [state, setState] = useState({
+		displayChart: false,
+		isAnimationActive: false,
+		chartArray: [],
+		containerWidth: 0,
+		contanierHeight: 0,
 	});
 
 	const ref = useRef(null);
