@@ -6,11 +6,12 @@ import Controls from '../Controls/Controls';
 import setNewDimensions from './helpers/setNewDimensions.js';
 import generateBarChartArray from './helpers/generateBarChartArray.js';
 import Sort from './core/Sort.js';
+import displayAnimations from './helpers/displayAnimations.js';
 
 function SortingVisualizer() {
 	const [barChart, setBarChart] = useState({
 		display: false,
-		isSorted: false,
+		isAnimationGoing: false,
 		array: [],
 	});
 
@@ -32,30 +33,29 @@ function SortingVisualizer() {
 		return () => window.removeEventListener('resize', newDimensions);
 	}, []);
 
-	const handleDisplay = () =>
+	const handleDisplay = () => {
+		if (barChart.array.length > 0) {
+			displayAnimations(null, []);
+		}
+
 		setBarChart({
 			display: true,
-			isSorted: false,
+			isAnimationGoing: false,
 			array: generateBarChartArray(currentDimensions),
 		});
+	};
 
 	const handleSubmit = (sortingAlgorithm) => {
 		Sort[sortingAlgorithm](barChart, setBarChart);
-	};
-
-	const handleSelect = () => {
-		if (barChart.isSorted) {
-			setNewDimensions(ref, setBarChart, setCurrentDimensions);
-		}
 	};
 
 	return (
 		<>
 			<Chart barChart={barChart} ref={ref} />
 			<Controls
+				barChart={barChart}
 				onDisplay={handleDisplay}
 				onSubmit={handleSubmit}
-				onSelect={handleSelect}
 			/>
 		</>
 	);

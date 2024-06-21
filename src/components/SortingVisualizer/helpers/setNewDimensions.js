@@ -1,11 +1,24 @@
-const setNewDimensions = (ref, setBarChart, setCurrentDimensions) => () => {
-	if (ref.current) {
-		const width = ref.current.offsetWidth;
-		const height = ref.current.offsetHeight;
+let currentAnimationToken = 0;
 
-		setBarChart({ display: false, isSorted: false, array: [] });
-		setCurrentDimensions({ width: width, height: height });
-	}
+const setNewDimensions = (ref, setBarChart, setCurrentDimensions) => {
+	return () => {
+		// Abort ongoing animations
+		currentAnimationToken++;
+
+		// Get new dimensions
+		const { clientWidth: width, clientHeight: height } = ref.current;
+
+		// Update state with new dimensions
+		setCurrentDimensions({ width, height });
+
+		// Clear the bar chart array to prevent errors during resize
+		setBarChart({
+			display: false,
+			isAnimationGoing: false,
+			array: [],
+		});
+	};
 };
 
 export default setNewDimensions;
+export { currentAnimationToken };

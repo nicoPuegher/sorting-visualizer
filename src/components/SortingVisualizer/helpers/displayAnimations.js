@@ -1,13 +1,28 @@
 import Transform from '../core/Transform.js';
 import constants from '../../../data/constants.js';
+import { currentAnimationToken } from './setNewDimensions.js';
 
 const { SORTING_SPEED } = constants;
 
+let timeouts = [];
+
 const displayAnimations = (setBarChart, animations) => {
+	// Use current animation token
+	const animationToken = currentAnimationToken;
+
+	timeouts.forEach((timeout) => clearTimeout(timeout));
+	timeouts = [];
+
 	animations.forEach((animation, i) => {
-		setTimeout(() => {
+		const timeoutId = setTimeout(() => {
+			// Abort if the token changed
+			if (animationToken !== currentAnimationToken) return;
+
 			setBarChart((b) => {
 				const copy = structuredClone(b.array);
+
+				// If the array is empty, abort the animation
+				if (!copy || copy.length == 0) return b;
 
 				// Reset the isCompared boolean value of every bar
 				Transform.allToNotCompared(copy);
@@ -19,9 +34,16 @@ const displayAnimations = (setBarChart, animations) => {
 				// Make the isSorted boolean value of every bar true
 				Transform.allToSorted(animations, copy, i);
 
-				return { ...b, array: copy };
+				return {
+					...b,
+					isAnimationGoing: true,
+					array: copy,
+				};
 			});
 		}, i * SORTING_SPEED);
+
+		// Track timeouts IDs
+		timeouts.push(timeoutId);
 	});
 };
 

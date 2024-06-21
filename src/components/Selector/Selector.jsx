@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Selector.module.css';
 
-function Selector({ onSubmit, onSelect }) {
+function Selector({ barChart, onSubmit }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
@@ -10,31 +10,27 @@ function Selector({ onSubmit, onSelect }) {
 		onSubmit(sortingAlgorithm);
 	};
 
-	const handleChange = () => onSelect();
-
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<label id="selector">Sorting</label>
 
-			<select
-				aria-labelledby="selector"
-				name="selectElement"
-				onChange={handleChange}
-			>
+			<select aria-labelledby="selector" name="selectElement">
 				<option value="bubble">Bubble</option>
 				<option value="selection">Selection</option>
 				<option value="insertion">Insertion</option>
 				<option value="quick">Quick</option>
 			</select>
 
-			<button type="submit">Sort</button>
+			<button type="submit" disabled={barChart.isAnimationGoing}>
+				Sort
+			</button>
 		</form>
 	);
 }
 
 Selector.propTypes = {
+	barChart: PropTypes.object.isRequired,
 	onSubmit: PropTypes.func.isRequired,
-	onSelect: PropTypes.func.isRequired,
 };
 
 export default Selector;
