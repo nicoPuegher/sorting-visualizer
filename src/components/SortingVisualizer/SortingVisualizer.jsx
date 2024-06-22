@@ -4,7 +4,7 @@ import Chart from '../Chart/Chart';
 import Controls from '../Controls/Controls';
 
 import setNewDimensions from './helpers/setNewDimensions.js';
-import generateBarChartArray from './helpers/generateBarChartArray.js';
+import generateChartArray from './helpers/generateChartArray.js';
 import Sort from './core/Sort.js';
 import displayAnimations from './helpers/displayAnimations.js';
 
@@ -34,7 +34,7 @@ function SortingVisualizer() {
 		setState({
 			displayChart: true,
 			isAnimationActive: false,
-			chartArray: generateBarChartArray(state.containerDimensions),
+			chartArray: generateChartArray(state.containerDimensions.height),
 			containerDimensions: { width: 0, height: 0 },
 		});
 	};
