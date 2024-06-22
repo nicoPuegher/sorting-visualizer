@@ -31,12 +31,14 @@ function SortingVisualizer() {
 			displayAnimations(null, []);
 		}
 
-		setState({
+		setState((prevState) => ({
+			...prevState,
 			displayChart: true,
 			isAnimationActive: false,
-			chartArray: generateChartArray(state.containerDimensions.height),
-			containerDimensions: { width: 0, height: 0 },
-		});
+			chartArray: generateChartArray(
+				prevState.containerDimensions.height,
+			),
+		}));
 	};
 
 	const handleSubmit = (algorithm) => {
