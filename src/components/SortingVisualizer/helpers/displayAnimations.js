@@ -19,25 +19,25 @@ const displayAnimations = (setState, animations) => {
 			if (animationToken !== currentAnimationToken) return;
 
 			setState((prevState) => {
-				const copy = structuredClone(prevState.chartArray);
+				const copyArray = structuredClone(prevState.chartArray);
 
 				// If the array is empty, abort the animation
-				if (!copy || copy.length == 0) return prevState;
+				if (!copyArray || copyArray.length == 0) return prevState;
 
 				// Reset the isCompared boolean value of every bar
-				Transform.allToNotCompared(copy);
+				Transform.allToNotCompared(copyArray);
 
-				isComparison(animation, copy);
-				isSwap(animation, copy);
-				isSorted(animation, copy);
+				isComparison(animation, copyArray);
+				isSwap(animation, copyArray);
+				isSorted(animation, copyArray);
 
 				// Make the isSorted boolean value of every bar true
-				Transform.allToSorted(animations, copy, i);
+				Transform.allToSorted(animations, copyArray, i);
 
 				return {
 					...prevState,
 					isAnimationActive: true,
-					chartArray: copy,
+					chartArray: copyArray,
 				};
 			});
 		}, i * SORTING_SPEED);
@@ -48,32 +48,32 @@ const displayAnimations = (setState, animations) => {
 };
 
 // Make compared bars red
-const isComparison = (animation, copy) => {
+const isComparison = (animation, copyArray) => {
 	if (animation.type === 'comparison') {
 		const [j, k] = animation.indices;
 		if (j !== undefined && k !== undefined) {
-			copy[j].isCompared = true;
-			copy[k].isCompared = true;
+			copyArray[j].isCompared = true;
+			copyArray[k].isCompared = true;
 		}
 	}
 };
 
 // Swap bars
-const isSwap = (animation, copy) => {
+const isSwap = (animation, copyArray) => {
 	if (animation.type === 'swap') {
 		const [j, k] = animation.indices;
 		if (j !== undefined && k !== undefined) {
-			[copy[j], copy[k]] = [copy[k], copy[j]];
+			[copyArray[j], copyArray[k]] = [copyArray[k], copyArray[j]];
 		}
 	}
 };
 
 // Make sorted bar purple
-const isSorted = (animation, copy) => {
+const isSorted = (animation, copyArray) => {
 	if (animation.type === 'sorted') {
 		const index = animation.index;
 		if (index !== undefined) {
-			copy[index].isSorted = true;
+			copyArray[index].isSorted = true;
 		}
 	}
 };
