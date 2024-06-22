@@ -39,8 +39,8 @@ function SortingVisualizer() {
 		});
 	};
 
-	const handleSubmit = (sortingAlgorithm) => {
-		Sort[sortingAlgorithm](state, setState);
+	const handleSubmit = (algorithm) => {
+		Sort[algorithm](state, setState);
 	};
 
 	return (

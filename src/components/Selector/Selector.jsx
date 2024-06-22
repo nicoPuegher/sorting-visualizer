@@ -6,8 +6,8 @@ function Selector({ state, onSubmit }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		const sortingAlgorithm = e.target[0].value;
-		onSubmit(sortingAlgorithm);
+		const algorithm = e.target[0].value;
+		onSubmit(algorithm);
 	};
 
 	return (
