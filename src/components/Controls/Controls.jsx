@@ -4,17 +4,20 @@ import PropTypes from 'prop-types';
 
 import styles from './Controls.module.css';
 
-function Controls({ state, onDisplay, onSubmit }) {
+function Controls({ isAnimationActive, onDisplay, onSubmit }) {
 	return (
 		<div className={styles.container}>
 			<button onClick={onDisplay}>Generate</button>
-			<Selector state={state} onSubmit={onSubmit} />
+			<Selector
+				isAnimationActive={isAnimationActive}
+				onSubmit={onSubmit}
+			/>
 		</div>
 	);
 }
 
 Controls.propTypes = {
-	state: PropTypes.object.isRequired,
+	isAnimationActive: PropTypes.bool.isRequired,
 	onDisplay: PropTypes.func.isRequired,
 	onSubmit: PropTypes.func.isRequired,
 };

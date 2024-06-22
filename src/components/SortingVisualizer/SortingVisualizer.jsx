@@ -47,7 +47,7 @@ function SortingVisualizer() {
 		<>
 			<Chart state={state} ref={ref} />
 			<Controls
-				state={state}
+				isAnimationActive={state.isAnimationActive}
 				onDisplay={handleDisplay}
 				onSubmit={handleSubmit}
 			/>

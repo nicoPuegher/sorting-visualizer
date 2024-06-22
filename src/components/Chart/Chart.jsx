@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 import styles from './Chart.module.css';
 
 const Chart = forwardRef(function Chart({ state }, ref) {
-	const chart = generateBarChart(state, styles.bar);
-	const barChartStyles = getBarChartStyles(state, styles);
+	const chart = generateBarChart(state.chartArray, styles.bar);
+	const barChartStyles = getBarChartStyles(state.displayChart, styles);
 	const content = state.displayChart ? chart : <h2>Generate an array</h2>;
 
 	return (
