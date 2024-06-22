@@ -27,8 +27,8 @@ const displayAnimations = (setState, animations) => {
 				// Reset the isCompared boolean value of every bar
 				Transform.allToNotCompared(copyArray);
 
-				isComparison(animation, copyArray);
-				isSwap(animation, copyArray);
+				isCompared(animation, copyArray);
+				isSwapped(animation, copyArray);
 				isSorted(animation, copyArray);
 
 				// Make the isSorted boolean value of every bar true
@@ -48,9 +48,10 @@ const displayAnimations = (setState, animations) => {
 };
 
 // Make compared bars red
-const isComparison = (animation, copyArray) => {
+const isCompared = (animation, copyArray) => {
 	if (animation.type === 'comparison') {
 		const [j, k] = animation.indices;
+
 		if (j !== undefined && k !== undefined) {
 			copyArray[j].isCompared = true;
 			copyArray[k].isCompared = true;
@@ -59,9 +60,10 @@ const isComparison = (animation, copyArray) => {
 };
 
 // Swap bars
-const isSwap = (animation, copyArray) => {
+const isSwapped = (animation, copyArray) => {
 	if (animation.type === 'swap') {
 		const [j, k] = animation.indices;
+
 		if (j !== undefined && k !== undefined) {
 			[copyArray[j], copyArray[k]] = [copyArray[k], copyArray[j]];
 		}
@@ -72,6 +74,7 @@ const isSwap = (animation, copyArray) => {
 const isSorted = (animation, copyArray) => {
 	if (animation.type === 'sorted') {
 		const index = animation.index;
+
 		if (index !== undefined) {
 			copyArray[index].isSorted = true;
 		}
