@@ -49,7 +49,7 @@ const displayAnimations = (setState, animations) => {
 
 // Make compared bars red
 const isCompared = (animation, copyArray) => {
-	if (animation.type === 'comparison') {
+	if (animation.type === 'compared') {
 		const [j, k] = animation.indices;
 
 		if (j !== undefined && k !== undefined) {
@@ -61,7 +61,7 @@ const isCompared = (animation, copyArray) => {
 
 // Swap bars
 const isSwapped = (animation, copyArray) => {
-	if (animation.type === 'swap') {
+	if (animation.type === 'swapped') {
 		const [j, k] = animation.indices;
 
 		if (j !== undefined && k !== undefined) {

@@ -1,9 +1,9 @@
 import Animation from '../core/Animation.js';
 import displayAnimations from '../helpers/displayAnimations.js';
 
-const generateAnimations = (array) => {
-	const copy = structuredClone(array);
-	const len = copy.length;
+const generateAnimations = (chartArray) => {
+	const copyArray = structuredClone(chartArray);
+	const len = copyArray.length;
 	const animations = [];
 
 	for (let i = 0; i < len - 1; i++) {
@@ -11,20 +11,23 @@ const generateAnimations = (array) => {
 
 		for (let j = i + 1; j < len; j++) {
 			// Push a comparison animation
-			Animation.comparison(animations, j, smallest);
+			Animation.compared(animations, j, smallest);
 
 			// Update which bar is the smallest
-			if (copy[j].height < copy[smallest].height) {
+			if (copyArray[j].height < copyArray[smallest].height) {
 				smallest = j;
 			}
 		}
 
 		// Swap items
 		if (smallest !== i) {
-			[copy[i], copy[smallest]] = [copy[smallest], copy[i]];
+			[copyArray[i], copyArray[smallest]] = [
+				copyArray[smallest],
+				copyArray[i],
+			];
 
 			// Push a swap animation
-			Animation.swap(animations, i, smallest);
+			Animation.swapped(animations, i, smallest);
 		}
 
 		// Push a sorted animation
@@ -37,8 +40,8 @@ const generateAnimations = (array) => {
 	return animations;
 };
 
-const selection = (state, setState) => {
-	const animations = generateAnimations(state.chartArray);
+const selection = (chartArray, setState) => {
+	const animations = generateAnimations(chartArray);
 	displayAnimations(setState, animations);
 };
 
