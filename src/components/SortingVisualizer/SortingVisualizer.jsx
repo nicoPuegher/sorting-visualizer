@@ -19,7 +19,7 @@ function SortingVisualizer() {
 	const ref = useRef(null);
 
 	useEffect(() => {
-		const newDimensions = setNewDimensions(ref, setState);
+		const newDimensions = setNewDimensions(ref.current, setState);
 		newDimensions();
 
 		window.addEventListener('resize', newDimensions);

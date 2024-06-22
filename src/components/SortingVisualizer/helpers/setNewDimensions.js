@@ -1,12 +1,12 @@
 let currentAnimationToken = 0;
 
-const setNewDimensions = (ref, setState) => {
+const setNewDimensions = (chartRef, setState) => {
 	return () => {
 		// Abort ongoing animations
 		currentAnimationToken++;
 
 		// Get new dimensions
-		const { clientWidth, clientHeight } = ref.current;
+		const { clientWidth, clientHeight } = chartRef;
 
 		// Clear the bar chart array to prevent errors during resize and update dimensions
 		setState({
