@@ -1,4 +1,4 @@
-const generateBarChart = (chartArray, styles) => {
+const generateChart = (chartArray, styles) => {
 	let array = null;
 
 	if (chartArray) {
@@ -8,11 +8,7 @@ const generateBarChart = (chartArray, styles) => {
 				className={styles}
 				style={{
 					height: `${bar.height}px`,
-					backgroundColor: bar.isSorted
-						? 'purple'
-						: bar.isCompared
-							? 'red'
-							: '',
+					backgroundColor: getColor(bar),
 				}}
 			></div>
 		));
@@ -21,4 +17,8 @@ const generateBarChart = (chartArray, styles) => {
 	return array;
 };
 
-export default generateBarChart;
+const getColor = (bar) => {
+	return bar.isSorted ? 'purple' : bar.isCompared ? 'red' : '';
+};
+
+export default generateChart;

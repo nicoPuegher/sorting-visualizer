@@ -14,7 +14,11 @@ function Selector({ isAnimationActive, onSubmit }) {
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<label id="selector">Sorting</label>
 
-			<select aria-labelledby="selector" name="selectElement">
+			<select
+				aria-labelledby="selector"
+				name="selectElement"
+				disabled={isAnimationActive}
+			>
 				<option value="bubble">Bubble</option>
 				<option value="selection">Selection</option>
 				<option value="insertion">Insertion</option>

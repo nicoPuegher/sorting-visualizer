@@ -40,7 +40,7 @@ function SortingVisualizer() {
 	};
 
 	const handleSubmit = (algorithm) => {
-		Sort[algorithm](state, setState);
+		Sort[algorithm](state.chartArray, setState);
 	};
 
 	return (

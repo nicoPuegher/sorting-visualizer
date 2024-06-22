@@ -1,7 +1,7 @@
-const getBarChartStyles = (displayChart, styles) => {
+const getChartStyles = (displayChart, styles) => {
 	return displayChart
 		? `${styles.container} ${styles.chart}`
 		: `${styles.container}`;
 };
 
-export default getBarChartStyles;
+export default getChartStyles;
