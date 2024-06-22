@@ -1,23 +1,19 @@
 let currentAnimationToken = 0;
 
-const setNewDimensions = (ref, setState, setCurrentDimensions) => {
+const setNewDimensions = (ref, setState) => {
 	return () => {
 		// Abort ongoing animations
 		currentAnimationToken++;
 
 		// Get new dimensions
-		const { clientWidth: width, clientHeight: height } = ref.current;
+		const { clientWidth, clientHeight } = ref.current;
 
-		// Update state with new dimensions
-		setCurrentDimensions({ width, height });
-
-		// Clear the bar chart array to prevent errors during resize
+		// Clear the bar chart array to prevent errors during resize and update dimensions
 		setState({
 			displayChart: false,
 			isAnimationActive: false,
 			chartArray: [],
-			containerWidth: 0,
-			contanierHeight: 0,
+			containerDimensions: { width: clientWidth, height: clientHeight },
 		});
 	};
 };

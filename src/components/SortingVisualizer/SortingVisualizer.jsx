@@ -13,19 +13,15 @@ function SortingVisualizer() {
 		displayChart: false,
 		isAnimationActive: false,
 		chartArray: [],
-		containerWidth: 0,
-		contanierHeight: 0,
+		containerDimensions: { width: 0, height: 0 },
 	});
 
 	const ref = useRef(null);
 
 	useEffect(() => {
-		const newDimensions = setNewDimensions(
-			ref,
-			setState,
-			setCurrentDimensions,
-		);
+		const newDimensions = setNewDimensions(ref, setState);
 		newDimensions();
+
 		window.addEventListener('resize', newDimensions);
 		return () => window.removeEventListener('resize', newDimensions);
 	}, []);
@@ -38,9 +34,8 @@ function SortingVisualizer() {
 		setState({
 			displayChart: true,
 			isAnimationActive: false,
-			chartArray: generateBarChartArray(currentDimensions),
-			containerWidth: 0,
-			contanierHeight: 0,
+			chartArray: generateBarChartArray(state.containerDimensions),
+			containerDimensions: { width: 0, height: 0 },
 		});
 	};
 
