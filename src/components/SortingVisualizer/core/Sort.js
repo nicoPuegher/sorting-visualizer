@@ -4,20 +4,20 @@ import insertionSort from '../algorithms/insertion.js';
 import quickSort from '../algorithms/quick.js';
 
 class Sort {
-	static bubble(state, setState) {
-		return bubbleSort(state, setState);
+	static bubble(chartArray, setState) {
+		return bubbleSort(chartArray, setState);
 	}
 
-	static selection(state, setState) {
-		return selectionSort(state, setState);
+	static selection(chartArray, setState) {
+		return selectionSort(chartArray, setState);
 	}
 
-	static insertion(state, setState) {
-		return insertionSort(state, setState);
+	static insertion(chartArray, setState) {
+		return insertionSort(chartArray, setState);
 	}
 
-	static quick(state, setState) {
-		return quickSort(state, setState);
+	static quick(chartArray, setState) {
+		return quickSort(chartArray, setState);
 	}
 }
 
