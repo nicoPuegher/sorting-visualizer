@@ -1,3 +1,4 @@
+// Generate an array of bars with a random height and custom color
 const generateChart = (chartArray, styles) => {
 	let array = null;
 
@@ -17,6 +18,7 @@ const generateChart = (chartArray, styles) => {
 	return array;
 };
 
+// Set bar color to purple if it is sorted, red if it is compared or empty as default
 const getColor = (bar) => {
 	return bar.isSorted ? 'purple' : bar.isCompared ? 'red' : '';
 };
