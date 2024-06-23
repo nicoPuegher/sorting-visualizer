@@ -18,6 +18,7 @@ function SortingVisualizer() {
 
 	const ref = useRef(null);
 
+	// Update container dimensions when screen size changes
 	useEffect(() => {
 		const newDimensions = setNewDimensions(ref.current, setState);
 		newDimensions();
@@ -26,6 +27,7 @@ function SortingVisualizer() {
 		return () => window.removeEventListener('resize', newDimensions);
 	}, []);
 
+	// Generate a new chartArray and display it
 	const handleDisplay = () => {
 		if (state.chartArray.length > 0) {
 			displayAnimations(null, []);
@@ -41,6 +43,7 @@ function SortingVisualizer() {
 		}));
 	};
 
+	// Call a sorting algorithm
 	const handleSubmit = (algorithm) => {
 		Sort[algorithm](state.chartArray, setState);
 	};
