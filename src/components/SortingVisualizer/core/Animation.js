@@ -1,3 +1,4 @@
+// Static methods do not require a class constructor
 class Animation {
 	static compared(animations, i, j) {
 		animations.push({ type: 'compared', indices: [i, j] });
