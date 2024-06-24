@@ -20,7 +20,15 @@ const generateChart = (chartArray, styles) => {
 
 // Set bar color to purple if it is sorted, red if it is compared or empty as default
 const getColor = (bar) => {
-	return bar.isSorted ? 'purple' : bar.isCompared ? 'red' : '';
+	const secondaryColor = getComputedStyle(
+		document.documentElement,
+	).getPropertyValue('--secondary');
+
+	const primaryColor = getComputedStyle(
+		document.documentElement,
+	).getPropertyValue('--primary');
+
+	return bar.isSorted ? secondaryColor : bar.isCompared ? primaryColor : '';
 };
 
 export default generateChart;
