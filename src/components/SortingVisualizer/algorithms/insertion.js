@@ -1,6 +1,7 @@
 import Animation from '../core/Animation.js';
 import displayAnimations from '../helpers/displayAnimations.js';
 
+// Generate an array of animations for insertion sort
 const generateAnimations = (chartArray) => {
 	const copyArray = structuredClone(chartArray);
 	const len = copyArray.length;
@@ -29,6 +30,7 @@ const generateAnimations = (chartArray) => {
 	return animations;
 };
 
+// Animate the sorting algorithm updating the state with the generated animations
 const insertion = (chartArray, setState) => {
 	const animations = generateAnimations(chartArray);
 	displayAnimations(setState, animations);
