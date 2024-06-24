@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Chart.module.css';
 
+// Generate a chart of bars and display it when displayChart is true, otherwise display h2
 const Chart = forwardRef(function Chart({ state }, ref) {
 	const chart = generateChart(state.chartArray, styles.bar);
 	const barChartStyles = getChartStyles(state.displayChart, styles);
