@@ -1,15 +1,16 @@
 import { forwardRef } from 'react';
 
-import generateBarChart from './utils/generateBarChart.jsx';
-import getBarChartStyles from './utils/getBarChartStyles.js';
+import generateChart from './utils/generateChart.jsx';
+import getChartStyles from './utils/getChartStyles.js';
 import PropTypes from 'prop-types';
 
 import styles from './Chart.module.css';
 
-const Chart = forwardRef(function Chart({ barChart }, ref) {
-	const chart = generateBarChart(barChart, styles.bar);
-	const barChartStyles = getBarChartStyles(barChart, styles);
-	const content = barChart.display ? chart : <h2>Generate an array</h2>;
+// Generate a chart of bars and display it when displayChart is true, otherwise display h2
+const Chart = forwardRef(function Chart({ state }, ref) {
+	const chart = generateChart(state.chartArray, styles.bar);
+	const barChartStyles = getChartStyles(state.displayChart, styles);
+	const content = state.displayChart ? chart : <h2>Generate an array</h2>;
 
 	return (
 		<div className={barChartStyles} ref={ref}>
@@ -19,7 +20,7 @@ const Chart = forwardRef(function Chart({ barChart }, ref) {
 });
 
 Chart.propTypes = {
-	barChart: PropTypes.object.isRequired,
+	state: PropTypes.object.isRequired,
 };
 
 export default Chart;

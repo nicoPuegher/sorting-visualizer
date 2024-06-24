@@ -3,21 +3,22 @@ import selectionSort from '../algorithms/selection.js';
 import insertionSort from '../algorithms/insertion.js';
 import quickSort from '../algorithms/quick.js';
 
+// Static methods do not require a class constructor
 class Sort {
-	static bubble(barChart, setBarChart) {
-		return bubbleSort(barChart, setBarChart);
+	static bubble(chartArray, setState) {
+		return bubbleSort(chartArray, setState);
 	}
 
-	static selection(barChart, setBarChart) {
-		return selectionSort(barChart, setBarChart);
+	static selection(chartArray, setState) {
+		return selectionSort(chartArray, setState);
 	}
 
-	static insertion(barChart, setBarChart) {
-		return insertionSort(barChart, setBarChart);
+	static insertion(chartArray, setState) {
+		return insertionSort(chartArray, setState);
 	}
 
-	static quick(barChart, setBarChart) {
-		return quickSort(barChart, setBarChart);
+	static quick(chartArray, setState) {
+		return quickSort(chartArray, setState);
 	}
 }
 

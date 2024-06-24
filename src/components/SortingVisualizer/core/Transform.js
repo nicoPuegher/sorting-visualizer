@@ -1,11 +1,12 @@
+// Static methods do not require a class constructor
 class Transform {
-	static allToNotCompared(array) {
-		array.forEach((bar) => (bar.isCompared = false));
+	static allToNotCompared(chartArray) {
+		chartArray.forEach((bar) => (bar.isCompared = false));
 	}
 
-	static allToSorted(animations, array, i) {
+	static allToSorted(animations, chartArray, i) {
 		if (i == animations.length - 1) {
-			array.forEach((bar) => (bar.isSorted = true));
+			chartArray.forEach((bar) => (bar.isSorted = true));
 		}
 	}
 }

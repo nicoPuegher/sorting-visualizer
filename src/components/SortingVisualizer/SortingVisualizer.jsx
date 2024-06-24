@@ -4,56 +4,55 @@ import Chart from '../Chart/Chart';
 import Controls from '../Controls/Controls';
 
 import setNewDimensions from './helpers/setNewDimensions.js';
-import generateBarChartArray from './helpers/generateBarChartArray.js';
+import generateChartArray from './helpers/generateChartArray.js';
 import Sort from './core/Sort.js';
 import displayAnimations from './helpers/displayAnimations.js';
 
 function SortingVisualizer() {
-	const [barChart, setBarChart] = useState({
-		display: false,
-		isAnimationGoing: false,
-		array: [],
-	});
-
-	const [currentDimensions, setCurrentDimensions] = useState({
-		width: 0,
-		height: 0,
+	const [state, setState] = useState({
+		displayChart: false,
+		isAnimationActive: false,
+		chartArray: [],
+		containerDimensions: { width: 0, height: 0 },
 	});
 
 	const ref = useRef(null);
 
+	// Update container dimensions when screen size changes
 	useEffect(() => {
-		const newDimensions = setNewDimensions(
-			ref,
-			setBarChart,
-			setCurrentDimensions,
-		);
+		const newDimensions = setNewDimensions(ref.current, setState);
 		newDimensions();
+
 		window.addEventListener('resize', newDimensions);
 		return () => window.removeEventListener('resize', newDimensions);
 	}, []);
 
+	// Generate a new chartArray and display it
 	const handleDisplay = () => {
-		if (barChart.array.length > 0) {
+		if (state.chartArray.length > 0) {
 			displayAnimations(null, []);
 		}
 
-		setBarChart({
-			display: true,
-			isAnimationGoing: false,
-			array: generateBarChartArray(currentDimensions),
-		});
+		setState((prevState) => ({
+			...prevState,
+			displayChart: true,
+			isAnimationActive: false,
+			chartArray: generateChartArray(
+				prevState.containerDimensions.height,
+			),
+		}));
 	};
 
-	const handleSubmit = (sortingAlgorithm) => {
-		Sort[sortingAlgorithm](barChart, setBarChart);
+	// Call a sorting algorithm
+	const handleSubmit = (algorithm) => {
+		Sort[algorithm](state.chartArray, setState);
 	};
 
 	return (
 		<>
-			<Chart barChart={barChart} ref={ref} />
+			<Chart state={state} ref={ref} />
 			<Controls
-				barChart={barChart}
+				isAnimationActive={state.isAnimationActive}
 				onDisplay={handleDisplay}
 				onSubmit={handleSubmit}
 			/>

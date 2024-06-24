@@ -1,22 +1,26 @@
 import Animation from '../core/Animation.js';
 import displayAnimations from '../helpers/displayAnimations.js';
 
-const generateAnimations = (array) => {
-	const copy = structuredClone(array);
-	const len = copy.length;
+// Generate an array of animations for bubble sort
+const generateAnimations = (chartArray) => {
+	const copyArray = structuredClone(chartArray);
+	const len = copyArray.length;
 	const animations = [];
 
 	for (let i = 0; i < len; i++) {
 		for (let j = 0; j < len - i - 1; j++) {
 			// Push a comparison animation
-			Animation.comparison(animations, j, j + 1);
+			Animation.compared(animations, j, j + 1);
 
 			// Swap items
-			if (copy[j].height > copy[j + 1].height) {
-				[copy[j], copy[j + 1]] = [copy[j + 1], copy[j]];
+			if (copyArray[j].height > copyArray[j + 1].height) {
+				[copyArray[j], copyArray[j + 1]] = [
+					copyArray[j + 1],
+					copyArray[j],
+				];
 
 				// Push a swap animation
-				Animation.swap(animations, j, j + 1);
+				Animation.swapped(animations, j, j + 1);
 			}
 		}
 
@@ -27,9 +31,10 @@ const generateAnimations = (array) => {
 	return animations;
 };
 
-const bubble = (barChart, setBarChart) => {
-	const animations = generateAnimations(barChart.array);
-	displayAnimations(setBarChart, animations);
+// Animate the sorting algorithm updating the state with the generated animations
+const bubble = (chartArray, setState) => {
+	const animations = generateAnimations(chartArray);
+	displayAnimations(setState, animations);
 };
 
 export default bubble;

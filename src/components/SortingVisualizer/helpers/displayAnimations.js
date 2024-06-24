@@ -6,38 +6,41 @@ const { SORTING_SPEED } = constants;
 
 let timeouts = [];
 
-const displayAnimations = (setBarChart, animations) => {
+const displayAnimations = (setState, animations) => {
 	// Use current animation token
 	const animationToken = currentAnimationToken;
 
+	// Clear previous timeouts and remove them all
 	timeouts.forEach((timeout) => clearTimeout(timeout));
 	timeouts = [];
 
 	animations.forEach((animation, i) => {
+		// Generate a timeout id for each animation
 		const timeoutId = setTimeout(() => {
 			// Abort if the token changed
 			if (animationToken !== currentAnimationToken) return;
 
-			setBarChart((b) => {
-				const copy = structuredClone(b.array);
+			setState((prevState) => {
+				const copyArray = structuredClone(prevState.chartArray);
 
 				// If the array is empty, abort the animation
-				if (!copy || copy.length == 0) return b;
+				if (!copyArray || copyArray.length == 0) return prevState;
 
-				// Reset the isCompared boolean value of every bar
-				Transform.allToNotCompared(copy);
+				// Reset the isCompared boolean value of every bar after each animation
+				Transform.allToNotCompared(copyArray);
 
-				isComparison(animation, copy);
-				isSwap(animation, copy);
-				isSorted(animation, copy);
+				// Check if the current animation is a compared, swapped or sorted type and call its animation
+				isCompared(animation, copyArray);
+				isSwapped(animation, copyArray);
+				isSorted(animation, copyArray);
 
-				// Make the isSorted boolean value of every bar true
-				Transform.allToSorted(animations, copy, i);
+				// Make the isSorted boolean value of every bar true after all animations
+				Transform.allToSorted(animations, copyArray, i);
 
 				return {
-					...b,
-					isAnimationGoing: true,
-					array: copy,
+					...prevState,
+					isAnimationActive: true,
+					chartArray: copyArray,
 				};
 			});
 		}, i * SORTING_SPEED);
@@ -48,32 +51,35 @@ const displayAnimations = (setBarChart, animations) => {
 };
 
 // Make compared bars red
-const isComparison = (animation, copy) => {
-	if (animation.type === 'comparison') {
+const isCompared = (animation, copyArray) => {
+	if (animation.type === 'compared') {
 		const [j, k] = animation.indices;
+
 		if (j !== undefined && k !== undefined) {
-			copy[j].isCompared = true;
-			copy[k].isCompared = true;
+			copyArray[j].isCompared = true;
+			copyArray[k].isCompared = true;
 		}
 	}
 };
 
 // Swap bars
-const isSwap = (animation, copy) => {
-	if (animation.type === 'swap') {
+const isSwapped = (animation, copyArray) => {
+	if (animation.type === 'swapped') {
 		const [j, k] = animation.indices;
+
 		if (j !== undefined && k !== undefined) {
-			[copy[j], copy[k]] = [copy[k], copy[j]];
+			[copyArray[j], copyArray[k]] = [copyArray[k], copyArray[j]];
 		}
 	}
 };
 
 // Make sorted bar purple
-const isSorted = (animation, copy) => {
+const isSorted = (animation, copyArray) => {
 	if (animation.type === 'sorted') {
 		const index = animation.index;
+
 		if (index !== undefined) {
-			copy[index].isSorted = true;
+			copyArray[index].isSorted = true;
 		}
 	}
 };

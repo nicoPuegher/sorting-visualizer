@@ -1,26 +1,27 @@
 import Animation from '../core/Animation.js';
 import displayAnimations from '../helpers/displayAnimations.js';
 
-const generateAnimations = (array) => {
-	const copy = structuredClone(array);
-	const len = copy.length;
+// Generate an array of animations for insertion sort
+const generateAnimations = (chartArray) => {
+	const copyArray = structuredClone(chartArray);
+	const len = copyArray.length;
 	const animations = [];
 
 	for (let i = 1; i < len; i++) {
-		let temporal = copy[i];
+		let temporal = copyArray[i];
 		let j = i - 1;
 
 		// Push a comparison animation
-		Animation.comparison(animations, j, i);
+		Animation.compared(animations, j, i);
 
 		// Swap items
-		while (j >= 0 && copy[j].height > temporal.height) {
-			copy[j + 1] = copy[j];
-			copy[j] = temporal;
+		while (j >= 0 && copyArray[j].height > temporal.height) {
+			copyArray[j + 1] = copyArray[j];
+			copyArray[j] = temporal;
 
 			// Push a comparison and swap animation
-			Animation.comparison(animations, j + 1, j);
-			Animation.swap(animations, j + 1, j);
+			Animation.compared(animations, j + 1, j);
+			Animation.swapped(animations, j + 1, j);
 
 			j--;
 		}
@@ -29,9 +30,10 @@ const generateAnimations = (array) => {
 	return animations;
 };
 
-const insertion = (barChart, setBarChart) => {
-	const animations = generateAnimations(barChart.array);
-	displayAnimations(setBarChart, animations);
+// Animate the sorting algorithm updating the state with the generated animations
+const insertion = (chartArray, setState) => {
+	const animations = generateAnimations(chartArray);
+	displayAnimations(setState, animations);
 };
 
 export default insertion;
