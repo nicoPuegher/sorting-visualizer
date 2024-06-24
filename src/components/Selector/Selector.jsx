@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 
 import styles from './Selector.module.css';
 
+// Allow user to select an algorithm and disable it when the sorting animation is active
 function Selector({ isAnimationActive, onSubmit }) {
+	// Call Sort class in SortingVisualizer component with the selected algorithm
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
