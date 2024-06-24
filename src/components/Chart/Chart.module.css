@@ -5,7 +5,14 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 1.5rem 0;
+	margin: 1rem 0;
+}
+
+/* Tablet and laptop+ */
+@media screen and (min-width: 481px) {
+	.container {
+		margin: 2rem 0;
+	}
 }
 
 .chart {
