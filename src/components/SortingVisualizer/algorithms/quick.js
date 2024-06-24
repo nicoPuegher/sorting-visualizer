@@ -1,6 +1,7 @@
 import Animation from '../core/Animation';
 import displayAnimations from '../helpers/displayAnimations';
 
+// Generate an array of animations for the partition of the current iteration
 function partition(copyArray, low, high, animations) {
 	let pivot = copyArray[high];
 	let smallest = low - 1;
@@ -34,6 +35,7 @@ function partition(copyArray, low, high, animations) {
 	return smallest + 1;
 }
 
+// Generate an array of animations for quick sort
 function generateAnimations(
 	copyArray,
 	low = 0,
@@ -48,6 +50,7 @@ function generateAnimations(
 	}
 }
 
+// Animate the sorting algorithm updating the state with the generated animations
 const quick = (chartArray, setState) => {
 	const copyArray = structuredClone(chartArray);
 	const animations = [];
