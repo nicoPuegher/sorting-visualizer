@@ -22,5 +22,5 @@
 
 .bar {
 	flex-grow: 1;
-	background-color: green;
+	background-color: var(--white);
 }
