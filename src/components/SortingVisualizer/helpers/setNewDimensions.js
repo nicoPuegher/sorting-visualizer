@@ -1,5 +1,6 @@
 let currentAnimationToken = 0;
 
+// Update chart dimensions when the screen size changes
 const setNewDimensions = (chartRef, setState) => {
 	return () => {
 		// Abort ongoing animations
