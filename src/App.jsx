@@ -1,4 +1,4 @@
-import Sorting from './components/Sorting/Sorting';
+import SortingVisualizer from './components/SortingVisualizer/SortingVisualizer';
 
 function App() {
 	return (
@@ -7,7 +7,7 @@ function App() {
 				<h1>Sorting Visualizer</h1>
 			</header>
 			<main>
-				<Sorting />
+				<SortingVisualizer />
 			</main>
 		</>
 	);

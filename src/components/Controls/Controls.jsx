@@ -1,22 +1,26 @@
 import Selector from '../Selector/Selector';
+
 import PropTypes from 'prop-types';
+
 import styles from './Controls.module.css';
 
-function Controls({ onDisplay, onSubmit, onSelect }) {
+// Allow user to generate a new chart or start a sorting animation
+function Controls({ isAnimationActive, onDisplay, onSubmit }) {
 	return (
 		<div className={styles.container}>
-			<button className={styles.primary} onClick={onDisplay}>
-				Generate
-			</button>
-			<Selector onSubmit={onSubmit} onSelect={onSelect} />
+			<button onClick={onDisplay}>Generate</button>
+			<Selector
+				isAnimationActive={isAnimationActive}
+				onSubmit={onSubmit}
+			/>
 		</div>
 	);
 }
 
 Controls.propTypes = {
+	isAnimationActive: PropTypes.bool.isRequired,
 	onDisplay: PropTypes.func.isRequired,
 	onSubmit: PropTypes.func.isRequired,
-	onSelect: PropTypes.func.isRequired,
 };
 
 export default Controls;

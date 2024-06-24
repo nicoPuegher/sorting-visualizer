@@ -1,41 +1,42 @@
 import PropTypes from 'prop-types';
+
 import styles from './Selector.module.css';
 
-function Selector({ onSubmit, onSelect }) {
+// Allow user to select an algorithm and disable it when the sorting animation is active
+function Selector({ isAnimationActive, onSubmit }) {
+	// Call Sort class in SortingVisualizer component with the selected algorithm
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const sortingAlgorithm = e.target[0].value;
-		onSubmit(sortingAlgorithm);
-	};
 
-	const handleChange = () => onSelect();
+		const algorithm = e.target[0].value;
+		onSubmit(algorithm);
+	};
 
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<label id="selector">Sorting</label>
 
 			<select
-				name="selectElement"
-				onChange={handleChange}
 				aria-labelledby="selector"
+				name="selectElement"
+				disabled={isAnimationActive}
 			>
 				<option value="bubble">Bubble</option>
 				<option value="selection">Selection</option>
 				<option value="insertion">Insertion</option>
 				<option value="quick">Quick</option>
-				<option value="merge">Merge</option>
-				<option value="heap">Heap</option>
-				<option value="counting">Counting</option>
 			</select>
 
-			<button type="submit">Sort</button>
+			<button type="submit" disabled={isAnimationActive}>
+				Sort
+			</button>
 		</form>
 	);
 }
 
 Selector.propTypes = {
+	isAnimationActive: PropTypes.bool.isRequired,
 	onSubmit: PropTypes.func.isRequired,
-	onSelect: PropTypes.func.isRequired,
 };
 
 export default Selector;
