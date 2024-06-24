@@ -90,14 +90,24 @@ select:disabled:hover {
 	color: var(--dark-complementary);
 }
 
+/* Tablet */
 @media screen and (min-width: 481px) and (max-width: 768px) {
+	h1 {
+		font-size: 3.4rem;
+	}
+
+	h2 {
+		font-size: 2.4rem;
+	}
+
 	button,
 	select {
-		font-weight: 600;
 		font-size: 1.9rem;
+		padding: 1.2rem;
 	}
 }
 
+/* Laptop+ */
 @media screen and (min-width: 769px) {
 	button,
 	select {
