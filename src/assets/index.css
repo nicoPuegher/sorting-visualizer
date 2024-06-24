@@ -1,3 +1,12 @@
+/* Color variables */
+:root {
+	--white: #ffffff;
+	--dark: #03091a;
+	--dark-complementary: #202542;
+	--primary: #d62e56;
+	--secondary: #6ba368;
+}
+
 /* General styles */
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -9,9 +18,8 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-	color-scheme: light dark;
-	color: rgba(255, 255, 255, 0.87);
-	background-color: #242424;
+	color: var(--white);
+	background-color: var(--dark);
 }
 
 * {
@@ -48,17 +56,37 @@ main {
 
 button,
 select {
+	font-weight: 500;
 	font-size: 1.7rem;
 	padding: 1rem;
-	border: 1px solid gray;
+	border: 1px solid var(--dark-complementary);
 	border-radius: 5px;
 	cursor: pointer;
-	background-color: lightgray;
+	color: var(--dark-complementary);
+	background-color: var(--white);
 }
 
 button:hover,
 select:hover {
-	background-color: gray;
+	color: var(--white);
+	background-color: var(--dark-complementary);
+}
+
+button:focus,
+select:focus {
+	outline-color: var(--secondary);
+}
+
+button:disabled,
+select:disabled {
+	cursor: not-allowed;
+	background: var(--primary);
+	opacity: 1;
+}
+
+button:disabled:hover,
+select:disabled:hover {
+	color: var(--dark-complementary);
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -81,12 +109,4 @@ select:hover {
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
-}
-
-/* Default color scheme */
-@media (prefers-color-scheme: light) {
-	:root {
-		color: #213547;
-		background-color: #ffffff;
-	}
 }
