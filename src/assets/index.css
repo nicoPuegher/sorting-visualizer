@@ -109,9 +109,17 @@ select:disabled:hover {
 
 /* Laptop+ */
 @media screen and (min-width: 769px) {
+	h1 {
+		font-size: 3.6rem;
+	}
+
+	h2 {
+		font-size: 2.6rem;
+	}
+
 	button,
 	select {
-		font-size: 1.5rem;
+		padding: 1.1rem;
 	}
 }
 
@@ -123,8 +131,8 @@ select:disabled:hover {
 	padding: 10px;
 }
 
-/* Tablet */
-@media screen and (min-width: 481px) and (max-width: 768px) {
+/* Tablet and laptop+ */
+@media screen and (min-width: 481px) {
 	#root {
 		padding: 20px;
 	}
