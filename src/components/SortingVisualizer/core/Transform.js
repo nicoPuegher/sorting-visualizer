@@ -1,3 +1,4 @@
+// Static methods do not require a class constructor
 class Transform {
 	static allToNotCompared(chartArray) {
 		chartArray.forEach((bar) => (bar.isCompared = false));
