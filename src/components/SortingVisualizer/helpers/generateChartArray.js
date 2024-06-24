@@ -2,6 +2,7 @@ import constants from '../../../data/constants.js';
 
 const { TOTAL_BARS } = constants;
 
+// Generate a chart array of TOTAL_BARS with a max height from the Chart container
 const generateChartArray = (height) => {
 	const chartArray = [];
 
