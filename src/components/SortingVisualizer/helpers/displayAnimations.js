@@ -10,10 +10,12 @@ const displayAnimations = (setState, animations) => {
 	// Use current animation token
 	const animationToken = currentAnimationToken;
 
+	// Clear previous timeouts and remove them all
 	timeouts.forEach((timeout) => clearTimeout(timeout));
 	timeouts = [];
 
 	animations.forEach((animation, i) => {
+		// Generate a timeout id for each animation
 		const timeoutId = setTimeout(() => {
 			// Abort if the token changed
 			if (animationToken !== currentAnimationToken) return;
@@ -24,14 +26,15 @@ const displayAnimations = (setState, animations) => {
 				// If the array is empty, abort the animation
 				if (!copyArray || copyArray.length == 0) return prevState;
 
-				// Reset the isCompared boolean value of every bar
+				// Reset the isCompared boolean value of every bar after each animation
 				Transform.allToNotCompared(copyArray);
 
+				// Check if the current animation is a compared, swapped or sorted type and call its animation
 				isCompared(animation, copyArray);
 				isSwapped(animation, copyArray);
 				isSorted(animation, copyArray);
 
-				// Make the isSorted boolean value of every bar true
+				// Make the isSorted boolean value of every bar true after all animations
 				Transform.allToSorted(animations, copyArray, i);
 
 				return {
