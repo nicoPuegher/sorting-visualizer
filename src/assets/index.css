@@ -122,3 +122,10 @@ select:disabled:hover {
 	flex-direction: column;
 	padding: 10px;
 }
+
+/* Tablet */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+	#root {
+		padding: 20px;
+	}
+}
