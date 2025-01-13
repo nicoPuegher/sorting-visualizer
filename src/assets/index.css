@@ -4,9 +4,9 @@
 :root {
 	--white: #f4f4f4;
 	--dark: #03091a;
-	--dark-complementary: #202542;
-	--primary: #d62e56;
-	--secondary: #6ba368;
+	--dark-complementary: #1a1d23;
+	--primary: #fc9292;
+	--secondary: #adfc92;
 }
 
 /* General styles */
@@ -75,16 +75,16 @@ select:hover {
 	background-color: var(--dark-complementary);
 }
 
-button:focus,
-select:focus {
-	outline-color: var(--secondary);
+button:focus {
+	color: var(--dark-complementary);
+	background-color: var(--white);
 }
 
 button:disabled,
 select:disabled {
 	cursor: not-allowed;
-	background: var(--primary);
-	opacity: 1;
+	background: var(--white);
+	opacity: 0.7;
 }
 
 button:disabled:hover,

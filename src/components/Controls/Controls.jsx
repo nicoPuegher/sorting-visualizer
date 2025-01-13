@@ -8,9 +8,9 @@ import styles from './Controls.module.css';
 function Controls({ isAnimationActive, onDisplay, onSubmit }) {
 	return (
 		<div className={styles.container}>
-			<button onClick={onDisplay}>Generate</button>
 			<Selector
 				isAnimationActive={isAnimationActive}
+				onDisplay={onDisplay}
 				onSubmit={onSubmit}
 			/>
 		</div>
